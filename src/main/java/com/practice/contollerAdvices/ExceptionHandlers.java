@@ -1,0 +1,20 @@
+package com.practice.contollerAdvices;
+
+import com.practice.dto.ExceptionDto;
+import org.apache.catalina.connector.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class ExceptionHandlers {
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<ExceptionDto> handleullPointerException()
+    {
+        ExceptionDto exceptionDto=new ExceptionDto();
+        exceptionDto.setMessage("Product Doesn't Exist");
+        return new ResponseEntity<>(exceptionDto,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
