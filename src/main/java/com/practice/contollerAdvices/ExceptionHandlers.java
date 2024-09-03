@@ -1,6 +1,6 @@
 package com.practice.contollerAdvices;
 
-import com.practice.Exception.ProductDeosntExist;
+import com.practice.Exception.ProductDoesntExist;
 import com.practice.dto.ExceptionDto;
 import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
@@ -18,8 +18,8 @@ public class ExceptionHandlers {
         exceptionDto.setMessage("Product Doesn't Exist");
         return new ResponseEntity<>(exceptionDto,HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    @ExceptionHandler(ProductDeosntExist.class)
-    public ResponseEntity<ExceptionDto> productNotExistException(ProductDeosntExist productDeosntExist)
+    @ExceptionHandler(ProductDoesntExist.class)
+    public ResponseEntity<ExceptionDto> productNotExistException(ProductDoesntExist productDeosntExist)
     {
         ExceptionDto dto=new ExceptionDto();
         dto.setMessage(productDeosntExist.getMessage());

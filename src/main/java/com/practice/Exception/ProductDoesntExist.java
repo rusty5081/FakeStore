@@ -2,9 +2,9 @@ package com.practice.Exception;
 
 import com.practice.dto.ExceptionDto;
 
-public class ProductDeosntExist extends Exception {
+public class ProductDoesntExist extends Exception {
 
-    public ProductDeosntExist(String message)
+    public ProductDoesntExist(String message)
     {
         super(message);
     }
