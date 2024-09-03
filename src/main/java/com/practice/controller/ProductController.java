@@ -1,5 +1,6 @@
 package com.practice.controller;
 
+import com.practice.Exception.ProductDeosntExist;
 import com.practice.Services.ProductService;
 import com.practice.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class ProductController {
         }
     }
     @GetMapping("/{id}")
-    public Product getSingleProduct(@PathVariable("id") Long id){
+    public Product getSingleProduct(@PathVariable("id") Long id) throws ProductDeosntExist {
         return productService.getsingleProduct(id);
     }
     @PostMapping

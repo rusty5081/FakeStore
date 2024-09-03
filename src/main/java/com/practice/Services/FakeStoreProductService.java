@@ -1,5 +1,6 @@
 package com.practice.Services;
 
+import com.practice.Exception.ProductDeosntExist;
 import com.practice.controller.ProductController;
 import com.practice.dto.FakeStoreProductDto;
 import com.practice.models.Category;
@@ -42,8 +43,12 @@ public class FakeStoreProductService implements  ProductService{
         return fakeStoreProductDto;
     }
     @Override
-    public Product getsingleProduct(Long id) {
+    public Product getsingleProduct(Long id) throws ProductDeosntExist {
         FakeStoreProductDto productDto=restTemplate.getForObject("https://fakestoreapi.com/products/"+id, FakeStoreProductDto.class);
+        if(productDto==null)
+        {
+            throw new ProductDeosntExist("Product with id:"+id+" doesn't exist");
+        }
         return covertFakeStoreProductToProduct(productDto);
     }
 
